@@ -13,3 +13,7 @@ Everything is an event in a digital modern world. Apache Kafka can deal with a h
 * How can I scale the throughput?
 * How can I have resilience and high availability?
 * How can I guarantee no messages losses?
+
+#### Concepts of Apache Kafka
+
+![image](https://user-images.githubusercontent.com/9732874/190005560-6acf3906-e42f-4c7c-a101-c0191ded7f61.png)
