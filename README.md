@@ -11,5 +11,5 @@ Everything is an event in a digital modern world. Apache Kafka can deal with a h
 * Where can I save the events?
 * How can I quickly (real time) recover each event and send an ACK of reading, even between different systems?
 * How can I scale the throughput?
-* How can I have resilient and high availability?
+* How can I have resilience and high availability?
 * How can I guarantee no messages losses?
