@@ -16,4 +16,6 @@ Everything is an event in a digital modern world. Apache Kafka can deal with a h
 
 #### Concepts of Apache Kafka
 
+Kafka is able to get events from a producer and save them for others (consumers) that are interested to use them.
+
 ![image](https://user-images.githubusercontent.com/9732874/190032601-a9eea95e-484f-4e7d-bb2a-80e1f6221afe.png)
