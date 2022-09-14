@@ -19,3 +19,7 @@ Everything is an event in a digital modern world. Apache Kafka can deal with a h
 Kafka is compound with a set of machines and each one is called as "broker". Each broker has its own database wich the events are storage. A important thing to know is that Kafka doesn't send messages to consumers, but only put the events available for someone to consume them.
 
 ![image](https://user-images.githubusercontent.com/9732874/190032601-a9eea95e-484f-4e7d-bb2a-80e1f6221afe.png)
+
+The brokers exchange message among them all the time to know who is part of the group. Olders version of Kafka make use of Zookeeper as Service Discovery, but newest version of Kafka will built its own solution.
+
+The best practices says that for productions put at least 3 brokers to oparate the Kafka.
