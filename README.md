@@ -16,4 +16,4 @@ Everything is an event in a digital modern world. Apache Kafka can deal with a h
 
 #### Concepts of Apache Kafka
 
-![image](https://user-images.githubusercontent.com/9732874/190011383-2cf6500b-0e1a-4439-bec7-5463b0123a37.png)
+![image](https://user-images.githubusercontent.com/9732874/190032601-a9eea95e-484f-4e7d-bb2a-80e1f6221afe.png)
