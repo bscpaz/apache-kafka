@@ -39,7 +39,7 @@ Topics are partitioned, meaning a topic is spread over a number of "buckets" loc
   * Optional metadata.
 
 * Key
-  * When a new event is published to a topic, it is actually appended to one of the topic's partitions. Events with the same event **key** are written to the same partition, and Kafka guarantees that any consumer of a given topic-partition will always read that partition's events in **exactly the same order as they were written**. "Key" is important when the order of the events is important, like a _payment order_ in an account (offset 5) and then a _payment reversal_ (offset 7). That is, a consumer B (fast machine on partition 2) cannot read the _payment reversal_ befere the consumer A (slow machine on partition 1) that is about to read the order of payment.
+  * When a new event is published to a topic, it is actually appended to one of the topic's partitions. Events with the same event **key** are written to the same partition, and Kafka guarantees that any consumer of a given topic-partition will always read that partition's events in **exactly the same order as they were written**. "Key" is important when the order of the events is important, like a _payment order_ in an account (offset 5) and then a _payment reversal_ (offset 7). That is, a consumer B (fast machine on partition 2) cannot read the _payment reversal_ before the consumer A (slow machine on partition 1) that is about to read the order of payment.
 
 * Value
   * It is the payload of the event. Example: a JSON.
