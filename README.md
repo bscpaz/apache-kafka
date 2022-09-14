@@ -28,10 +28,9 @@ Events are organized and durably stored in **topics**. Very simplified, a topic 
 Topics in Kafka are like a _log_ which is a sequence of events. Each events receive a number (from 0 to n) thats is called _offset_ (a kind of an ID). Each consumer can read the _offset_ that it likes even olders _offsets_ (i.e. an offset that failed can be read again for a new try). This is possible as all events are stored in disk even if that event was already read by a consumer (they are still there).
 
 ### Partitions
-Topics are partitioned, meaning a topic is spread over a number of "buckets" located on different Kafka brokers (_Don't Put All your Eggs in One Basket_ - giving us resilience). This distributed placement of your data is very important for scalability because it allows client applications to both read and write the data from/to many brokers at the same time. When a new event is published to a topic, it is actually appended to one of the topic's partitions (_round robin_ algorithm when the _key_ of the event is null).
+Topics are partitioned, meaning a topic is spread over a number of "buckets" located on different Kafka brokers (_Don't Put All your Eggs in One Basket_ - giving us resilience). This distributed placement of your data is very important for scalability because it allows client applications to both read and write the data from/to many brokers at the same time. When a new event is published to a topic, it is actually appended to one of the topic's partitions (_round robin_ algorithm when the "_key_" of the event is null).
 
 ![image](https://user-images.githubusercontent.com/9732874/190252253-cb86d6ae-a148-4363-972a-169258315d4f.png)
-
 
 ### Anatomy of a offset
 ![image](https://user-images.githubusercontent.com/9732874/190244353-98b05af6-7da4-4aa3-a743-bd2654f1ce50.png)
@@ -40,7 +39,7 @@ Topics are partitioned, meaning a topic is spread over a number of "buckets" loc
   * Optional metadata.
 
 * Key
-  * When a new event is published to a topic, it is actually appended to one of the topic's partitions. Events with the same event **key** are written to the same partition, and Kafka guarantees that any consumer of a given topic-partition will always read that partition's events in **exactly the same order as they were written**.
+  * When a new event is published to a topic, it is actually appended to one of the topic's partitions. Events with the same event **key** are written to the same partition, and Kafka guarantees that any consumer of a given topic-partition will always read that partition's events in **exactly the same order as they were written**. "Key" is important when the order of the events is important, like a _payment order_ in an account (offset 5) and then a _payment reversal_ (offset 7). That is, a consumer B (fast machine on partition 2) cannot read the _payment reversal_ befere the consumer A (slow machine on partition 1) that is about to read the order of payment.
 
 * Value
   * It is the payload of the event. Example: a JSON.
