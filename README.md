@@ -16,7 +16,7 @@ Everything is an event in a digital modern world. Apache Kafka can deal with a h
 
 ## Concepts of Apache Kafka
 
-Kafka is compound with a set of machines and each one is called as "broker". Each broker has its own database which the events are stored. A important thing to know is that Kafka doesn't send messages to consumers, but only put the events available for someone to consume them.
+Kafka is compound with a set of machines and each one is called as "broker". Each broker has its own database which the events are stored. A important thing to know is that Kafka doesn't send messages to consumers, but only put the events to be available for someone else to consume them.
 
 ![image](https://user-images.githubusercontent.com/9732874/190032601-a9eea95e-484f-4e7d-bb2a-80e1f6221afe.png)
 
