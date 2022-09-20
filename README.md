@@ -53,6 +53,6 @@ All writes go to the leader of the partition, and reads can go to the leader or 
 
 ![image](https://user-images.githubusercontent.com/9732874/191154577-92665b40-3b09-4bb5-bf36-608c56c7ef79.png)
 
-When the leader does die Kafka will choose a new leader from among the followers.
+When the leader does die Kafka will choose a new leader from among the followers and a unique broker may have two leaders.  If a follower dies, gets stuck, or falls behind, the leader will remove it from the list of in sync replicas.
 
 
