@@ -51,6 +51,8 @@ The unit of replication is the topic partition. Under non-failure conditions, ea
 
 All writes go to the leader of the partition, and reads can go to the leader or the followers of the partition. Typically, there are many more partitions than brokers and the leaders are evenly distributed among brokers. The logs on the followers are identical to the leader's log—all have the same offsets and messages in the same order (though, of course, at any given time the leader may have a few as-yet unreplicated messages at the end of its log). Followers consume messages from the leader just as a normal Kafka consumer would and apply them to their own log. 
 
+![image](https://user-images.githubusercontent.com/9732874/191154577-92665b40-3b09-4bb5-bf36-608c56c7ef79.png)
+
 
 
 
