@@ -64,3 +64,15 @@ When writing to Kafka, producers can choose whether they wait for the message to
 * acks=1: This will mean the leader will write the record to its local log but will respond without awaiting full acknowledgement from all followers. In this case should the leader fail immediately after acknowledging the record but before the followers have replicated it then the record will be lost.
 
 * acks=-1 (or acks=all): This means the leader will wait for the full set of in-sync replicas to acknowledge the record. This guarantees that the record will not be lost as long as at least one in-sync replica remains alive. This is the strongest available guarantee but it is slowest option.
+
+### Message Delivery Semantics
+The semantic guarantees that Kafka provides between producer and consumer has multiple possible message delivery guarantees:
+
+* At most once: Messages may be lost but are never redelivered. It has the better performance.
+![image](https://user-images.githubusercontent.com/9732874/191397472-8a00438f-534a-4a40-b799-07189d429b16.png)
+
+* At least once: Messages are never lost but may be redelivered (duplicated delivers). It has a mid perform and consumers must handle duplicated messages if it want.
+![image](https://user-images.githubusercontent.com/9732874/191397993-a9f2d1dc-850b-4d61-b464-d0a36a652aa3.png)
+
+* Exactly once: This is what people actually want, each message is delivered once and only once. Worst perform.
+![image](https://user-images.githubusercontent.com/9732874/191398375-05c5efd1-3119-4e84-921f-60d66116ca31.png)
