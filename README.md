@@ -75,3 +75,5 @@ The semantic guarantees that Kafka provides between producer and consumer has mu
 
 * _Exactly once_: This is what people actually want, each message is delivered once and only once. Worst perform.
 ![image](https://user-images.githubusercontent.com/9732874/191398375-05c5efd1-3119-4e84-921f-60d66116ca31.png)
+
+Kafka includes support for **idempotent** and transactional capabilities in the producer. Idempotent delivery ensures that messages are delivered exactly once to a particular topic partition during the lifetime of a single producer. That is, once the idempotent option is enabled, Kafka will discarts duplicated messages from producers.
