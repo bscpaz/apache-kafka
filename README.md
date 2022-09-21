@@ -70,7 +70,7 @@ The semantic guarantees that Kafka provides between producer and consumer has mu
 * _At most once_: Messages may be lost but are never redelivered (non-duplicated delivers). It has the better performance.
 ![image](https://user-images.githubusercontent.com/9732874/191397472-8a00438f-534a-4a40-b799-07189d429b16.png)
 
-* _At least once_: Messages are never lost but may be redelivered (duplicated delivers). It has a mid perform and consumers must handle duplicated messages if it want.
+* _At least once_: Messages are never lost but may be redelivered (duplicated delivers). It has a mid perform and consumers may handle duplicated messages if it want.
 ![image](https://user-images.githubusercontent.com/9732874/191397993-a9f2d1dc-850b-4d61-b464-d0a36a652aa3.png)
 
 * _Exactly once_: This is what people actually want, each message is delivered once and only once. Worst perform.
