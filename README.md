@@ -30,7 +30,7 @@ Topics in Kafka are like a _log_ which is a sequence of events. Each events rece
 ### Partitions
 Topics are partitioned, meaning a topic is spread over a number of "buckets" located on different Kafka brokers (_Don't Put All your Eggs in One Basket_ - giving us resilience). This distributed placement of your data is very important for scalability because it allows client applications to both read and write the data from/to many brokers at the same time. When a new event is published to a topic, it is actually appended to one of the topic's partitions (_round robin_ algorithm when the "_key_" of the event is null).
 
-![image](https://user-images.githubusercontent.com/9732874/190252253-cb86d6ae-a148-4363-972a-169258315d4f.png)
+![image](https://user-images.githubusercontent.com/9732874/192921645-1eb7e140-212f-40fa-8076-098505190350.png)
 
 ### Anatomy of a offset
 ![image](https://user-images.githubusercontent.com/9732874/190244353-98b05af6-7da4-4aa3-a743-bd2654f1ce50.png)
@@ -51,7 +51,7 @@ The unit of replication is the topic partition. Under non-failure conditions, ea
 
 All writes go to the leader of the partition, and reads can go to the leader or the followers of the partition. Typically, there are many more partitions than brokers and the leaders are evenly distributed among brokers. The logs on the followers are identical to the leader's log—all have the same offsets and messages in the same order (though, of course, at any given time the leader may have a few as-yet unreplicated messages at the end of its log). Followers consume messages from the leader just as a normal Kafka consumer would and apply them to their own log. 
 
-![image](https://user-images.githubusercontent.com/9732874/191154577-92665b40-3b09-4bb5-bf36-608c56c7ef79.png)
+![image](https://user-images.githubusercontent.com/9732874/192921136-f467b9ef-670a-4856-a7e9-845f4b843c60.png)
 
 When the leader does die Kafka will choose a new leader from among the followers and a unique broker may have two leaders.  If a follower dies, gets stuck, or falls behind, the leader will remove it from the list of in sync replicas.
 
@@ -77,3 +77,19 @@ The semantic guarantees that Kafka provides between producer and consumer has mu
 ![image](https://user-images.githubusercontent.com/9732874/191398375-05c5efd1-3119-4e84-921f-60d66116ca31.png)
 
 Kafka includes support for **idempotent** and transactional capabilities in the producer. Idempotent delivery ensures that messages are delivered exactly once to a particular topic partition during the lifetime of a single producer. That is, once the idempotent option is enabled, Kafka will discarts duplicated messages from producers but it may occurs more slowness. By the other hand, if the idempotent option is disabled, consumers may read duplicated messages but Kafka will be faster.
+
+### Consumer's group
+
+A consumer group is a set of consumers that share the same group id. When a topic is consumed by consumers in the same group, every partition will be read by only one consumer in that group. That is, "If all consumers instances have the same consumer group, then the records will effectively be load-balanced over the consumer instances". There is no way for two or more consumers in the same group reading the same partition.
+
+This is an example that there is one consumer overloaded.
+![image](https://user-images.githubusercontent.com/9732874/192923463-e0d4f9c5-02e4-4eb5-8678-5443a1de2bed.png)
+
+It's a good practice to have the same amount of consumers and partitions, like below:
+![image](https://user-images.githubusercontent.com/9732874/192924262-2634a51a-6b88-407b-a165-bb671d667b1f.png)
+
+And if you have more consumers in the same group than partitions, all extra consumers will be idle:
+
+![image](https://user-images.githubusercontent.com/9732874/192928613-433a3abb-c865-4d79-b97d-0221b5ee77f2.png)
+
+
