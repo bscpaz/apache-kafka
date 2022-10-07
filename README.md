@@ -92,4 +92,4 @@ And if you have more consumers in the same group than partitions, all extra cons
 
 ![image](https://user-images.githubusercontent.com/9732874/192928613-433a3abb-c865-4d79-b97d-0221b5ee77f2.png)
 
-
+However, if some consumer dies or falls ("Consumer 2"), the idle consumer ("Consumer 4") will replace the first one.
