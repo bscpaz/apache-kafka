@@ -5,7 +5,7 @@ See: https://kafka.apache.org/
 
 ## World of events
 
-Everything is an event in a digital modern world. Apache Kafka can deal with a huge throughput of events and it can store then for someone else to consume then. That is, Kafka is able to get events from a producer and save them for others (consumers) that are interested to use them.
+Everything is an event in a digitally modern world. Apache Kafka can handle a huge throughput of events and can store them for someone else to consume later. In other words, Kafka is able to receive events from a producer and save them for others (consumers) who are interested in using them.
 
 #### Key points that Kafka answers:
 * Where can I save the events?
