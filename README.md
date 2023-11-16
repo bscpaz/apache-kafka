@@ -60,9 +60,9 @@ When writing to Kafka, producers can choose whether they wait for the message to
 
 * ack=0: If set to zero, the producer will **not** wait for any acknowledgment from the server at all. The record will be immediately added to the socket buffer and considered sent. No guarantee can be made that the server has received the record in this case, and the retries configuration will not take effect (as the client won't generally know of any failures). The offset given back for each record will always be set to -1. This scenario is suitable when you need to process a huge amount of data, and it's not critical if some messages are lost. Example: Car position (GPS) in an Uber application.
 
-* acks=1: This will mean the leader will write the record to its local log but will respond without awaiting full acknowledgement from all followers. In this case should the leader fail immediately after acknowledging the record but before the followers have replicated it then the record will be lost.
+* acks=1: This means the leader will write the record to its local log but will respond without awaiting full acknowledgment from all followers. In this case, if the leader fails immediately after acknowledging the record but before the followers have replicated it, then the record will be lost.
 
-* acks=-1 (or acks=all): This means the leader will wait for the full set of in-sync replicas to acknowledge the record. This guarantees that the record will not be lost as long as at least one in-sync replica remains alive. This is the strongest available guarantee but it is slowest option.
+* acks=-1 (or acks=all): This means the leader will wait for the full set of in-sync replicas to acknowledge the record. This guarantees that the record will not be lost as long as at least one in-sync replica remains alive. While this provides the strongest available guarantee, it is the slowest option.
 
 ### Message Delivery Guarantees
 The semantic guarantees that Kafka provides between producer and consumer has multiple possible message delivery guarantees:
