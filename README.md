@@ -20,7 +20,7 @@ Kafka is composed of a set of machines, and each one is referred to as a 'broker
 
 ![image](https://user-images.githubusercontent.com/9732874/190032601-a9eea95e-484f-4e7d-bb2a-80e1f6221afe.png)
 
-The brokers exchange message among them all the time to know who is part of the group. Olders versions of Kafka make use of Zookeeper as Service Discovery, but future  versions of Kafka will use a own built solution. The best practices says that for productions environment put at least 3 brokers to oparate the Kafka.
+The brokers continuously exchange messages among themselves to maintain awareness of the group members. Older versions of Kafka utilized Zookeeper for Service Discovery, but upcoming Kafka versions will incorporate an internally developed solution. Best practices recommend deploying a minimum of three brokers for Kafka to operate in a production environment.
 
 ### Topics
 Events are organized and durably stored in **topics**. Very simplified, a topic is similar to a folder in a filesystem, and the events are the files in that folder. An example topic name could be "payments". That is, a topic is the channel where producers send events and consumres read then and we can have many consumers reading events from the same topic and reanding the same event. This is different from RabbitMQ which once a message got read from a consumer no one can read it again.
