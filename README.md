@@ -28,7 +28,7 @@ Events are systematically organized and durably stored in **topics**. In a simpl
 Topics in Kafka resemble a _log_, representing a sequence of events. Each event is assigned a number, ranging from 0 to n, known as an _offset_, essentially serving as an ID. Consumers have the flexibility to read any _offset_ of their choice, even revisiting older _offsets_. For example, an _offset_ that previously failed can be re-read for a new attempt. This is feasible because all events are persistently stored on disk, even if an event has already been consumed by a consumer—they remain accessible.
 
 ### Partitions
-Topics are partitioned, meaning a topic is spread over a number of "buckets" located on different Kafka brokers (_Don't Put All your Eggs in One Basket_ - giving us resilience). This distributed placement of your data is very important for scalability because it allows client applications to both read and write the data from/to many brokers at the same time. When a new event is published to a topic, it is actually appended to one of the topic's partitions (_round robin_ algorithm when the "_key_" of the event is null).
+Topics in Kafka are partitioned, implying that a topic is distributed across a number of 'buckets' located on different Kafka brokers (_Don't Put All your Eggs in One Basket_ - giving us resilience). This strategic distribution of data is crucial for scalability, enabling client applications to concurrently read and write data from/to multiple brokers. When a new event is published to a topic, it is appended to one of the topic's partitions, with a _round robin_ algorithm employed when the "_key_" of the event is null.
 
 ![image](https://user-images.githubusercontent.com/9732874/192921645-1eb7e140-212f-40fa-8076-098505190350.png)
 
