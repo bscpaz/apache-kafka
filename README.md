@@ -7,12 +7,12 @@ See: https://kafka.apache.org/
 
 Everything is an event in a digitally modern world. Apache Kafka can handle a huge throughput of events and can store them for someone else to consume later. In other words, Kafka is able to receive events from a producer and save them for others (consumers) who are interested in using them.
 
-#### Key points that Kafka answers:
-* Where can I save the events?
-* How can I quickly (real time) recover each event and send an ACK of reading, even between different systems?
+#### Key points addressed by Kafka include:
+* Where can I store events?
+* How can I efficiently retrieve each event in real-time and send an acknowledgment of reading (ACK), even across different systems?
 * How can I scale the throughput?
-* How can I have resilience and high availability?
-* How can I guarantee no messages losses?
+* How can I ensure resilience and high availability?
+* How can I guarantee no message losses?
 
 ## Concepts of Apache Kafka
 
