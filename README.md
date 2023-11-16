@@ -88,7 +88,7 @@ This is an example that there is one consumer overloaded.
 It's a good practice to have the same amount of consumers and partitions, like below:
 ![image](https://user-images.githubusercontent.com/9732874/192924262-2634a51a-6b88-407b-a165-bb671d667b1f.png)
 
-And if you have more consumers in the same group than partitions, all extra consumers will be idle:
+If there are more consumers in the same group than partitions, the excess consumers will remain idle:
 
 ![image](https://user-images.githubusercontent.com/9732874/192928613-433a3abb-c865-4d79-b97d-0221b5ee77f2.png)
 
