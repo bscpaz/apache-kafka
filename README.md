@@ -58,7 +58,7 @@ When the leader does die Kafka will choose a new leader from among the followers
 ### Availability and Durability Guarantees
 When writing to Kafka, producers can choose whether they wait for the message to be acknowledged by 0,1 or all (-1) replicas.
 
-* ack=0: If set to zero then the producer will **not** wait for any acknowledgment from the server at all. The record will be immediately added to the socket buffer and considered sent. No guarantee can be made that the server has received the record in this case, and the retries configuration will not take effect (as the client won't generally know of any failures). The offset given back for each record will always be set to -1. This scenario is good when you need to process a huge of data and it's not critical if some of messages get loss. Example: Car position (GPS) in an Uber application.
+* ack=0: If set to zero, the producer will **not** wait for any acknowledgment from the server at all. The record will be immediately added to the socket buffer and considered sent. No guarantee can be made that the server has received the record in this case, and the retries configuration will not take effect (as the client won't generally know of any failures). The offset given back for each record will always be set to -1. This scenario is suitable when you need to process a huge amount of data, and it's not critical if some messages are lost. Example: Car position (GPS) in an Uber application.
 
 * acks=1: This will mean the leader will write the record to its local log but will respond without awaiting full acknowledgement from all followers. In this case should the leader fail immediately after acknowledging the record but before the followers have replicated it then the record will be lost.
 
