@@ -49,7 +49,7 @@ Kafka replicates the log for each topic's partitions across a configurable numbe
 
 The unit of replication is the topic partition. Under non-failure conditions, each partition in Kafka has a single leader and zero or more followers. The total number of replicas including the leader constitute the **replication factor**. 
 
-All writes go to the leader of the partition, and reads can go to the leader or the followers of the partition. Typically, there are many more partitions than brokers and the leaders are evenly distributed among brokers. The logs on the followers are identical to the leader's log—all have the same offsets and messages in the same order (though, of course, at any given time the leader may have a few as-yet unreplicated messages at the end of its log). Followers consume messages from the leader just as a normal Kafka consumer would and apply them to their own log. 
+All writes are directed to the leader of the partition, while reads can be served by either the leader or the followers of the partition. Typically, there are many more partitions than brokers, and the leaders are evenly distributed among brokers. The logs on the followers are identical to the leader's log—they all have the same offsets and messages in the same order. However, it's worth noting that, at any given time, the leader may have a few as-yet unreplicated messages at the end of its log. Followers consume messages from the leader just as a normal Kafka consumer would and apply them to their own log.
 
 ![image](https://user-images.githubusercontent.com/9732874/192921136-f467b9ef-670a-4856-a7e9-845f4b843c60.png)
 
